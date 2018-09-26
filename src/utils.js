@@ -37,7 +37,7 @@ export const randomString = (length = 8) => {
 export const uniquifySVGIDs = (() => {
   const mkAttributePattern = attr => `(?:(?:\\s|\\:)${attr})`;
 
-  const idPattern = new RegExp(`(?:(${(mkAttributePattern('id'))})="([^"]+)")|(?:(${(mkAttributePattern('href'))}|${(mkAttributePattern('role'))}|${(mkAttributePattern('arcrole'))})="\\#([^"]+)")|(?:="url\\(\\#([^\\)]+)\\)")|(?:url\\(\\#([^\\)]+)\\))`, 'g');
+  const idPattern = new RegExp(`(?:(${(mkAttributePattern('data-id'))})="([^"]+)")|(?:(${(mkAttributePattern('href'))}|${(mkAttributePattern('role'))}|${(mkAttributePattern('arcrole'))})="\\#([^"]+)")|(?:="url\\(\\#([^\\)]+)\\)")|(?:url\\(\\#([^\\)]+)\\))`, 'g');
 
   return (svgText, svgID, baseURL) => {
     const uniquifyID = id => `${id}___${svgID}`;

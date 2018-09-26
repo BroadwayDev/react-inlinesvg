@@ -1,7 +1,6 @@
 .idea/
 .tmp/
 coverage/
-es/
 documentation/
 lib/
 node_modules/

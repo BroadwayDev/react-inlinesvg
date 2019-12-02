@@ -148,7 +148,7 @@ export default class InlineSVG extends React.PureComponent<IProps, IState> {
 
   private updateSVGAttributes(node: SVGSVGElement): SVGSVGElement {
     const { baseURL = '', uniquifyIDs } = this.props;
-    const replaceableAttributes = ['data-id', 'href', 'xlink:href', 'xlink:role', 'xlink:arcrole'];
+    const replaceableAttributes = ['id', 'data["id"]', 'href', 'xlink:href', 'xlink:role', 'xlink:arcrole'];
     const linkAttributes = ['href', 'xlink:href'];
     const isDataValue = (name: string, value: string) =>
       linkAttributes.indexOf(name) >= 0 && (value ? value.indexOf('#') < 0 : false);
@@ -160,7 +160,7 @@ export default class InlineSVG extends React.PureComponent<IProps, IState> {
     [...node.children].map(d => {
       if (d.attributes && d.attributes.length) {
         const attributes = Object.values(d.attributes);
-
+        console.log(attributes)
         attributes.forEach(a => {
           const match = a.value.match(/url\((.*?)\)/);
 

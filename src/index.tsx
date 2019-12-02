@@ -148,7 +148,7 @@ export default class InlineSVG extends React.PureComponent<IProps, IState> {
 
   private updateSVGAttributes(node: SVGSVGElement): SVGSVGElement {
     const { baseURL = '', uniquifyIDs } = this.props;
-    const replaceableAttributes = ['id', 'href', 'xlink:href', 'xlink:role', 'xlink:arcrole'];
+    const replaceableAttributes = ['data-id', 'href', 'xlink:href', 'xlink:role', 'xlink:arcrole'];
     const linkAttributes = ['href', 'xlink:href'];
     const isDataValue = (name: string, value: string) =>
       linkAttributes.indexOf(name) >= 0 && (value ? value.indexOf('#') < 0 : false);

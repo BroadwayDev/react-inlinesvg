@@ -15,6 +15,7 @@ export interface IProps {
     uniqueHash?: string;
     uniquifyIDs?: boolean;
     [key: string]: any;
+    wrapper: () => React.FunctionComponentElement<React.ReactNode>;
 }
 export interface IState {
     content: string;
@@ -45,6 +46,7 @@ export default class InlineSVG extends React.PureComponent<IProps, IState> {
     static defaultProps: {
         cacheRequests: boolean;
         uniquifyIDs: boolean;
+        wrapper: () => void;
     };
     private _isMounted;
     private readonly hash;

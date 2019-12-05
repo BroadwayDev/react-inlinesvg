@@ -19,6 +19,7 @@ export interface IProps {
   uniqueHash?: string;
   uniquifyIDs?: boolean;
   [key: string]: any;
+  wrapper: () => React.FunctionComponentElement<React.ReactNode>;
 }
 
 export interface IState {
@@ -56,6 +57,7 @@ export default class InlineSVG extends React.PureComponent<IProps, IState> {
   public static defaultProps = {
     cacheRequests: true,
     uniquifyIDs: false,
+    wrapper: () => {},
   };
 
   // tslint:disable-next-line:variable-name
@@ -400,11 +402,17 @@ export default class InlineSVG extends React.PureComponent<IProps, IState> {
       title,
       uniqueHash,
       uniquifyIDs,
+      wrapper,
       ...rest
     } = this.props;
 
     if (element) {
-      return React.cloneElement(element as React.ReactElement, { ref: innerRef, ...rest });
+      const node = React.cloneElement(element as React.ReactElement, { ref: innerRef, ...rest });
+      if (wrapper()) {
+        const everything = React.cloneElement(wrapper() as React.ReactElement, {}, node)
+        return everything;
+      }
+     
     }
 
     if ([STATUS.UNSUPPORTED, STATUS.FAILED].indexOf(status) > -1) {

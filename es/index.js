@@ -63,13 +63,9 @@ var InlineSVG = function (_React$PureComponent) {
   }
 
   _createClass(InlineSVG, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.isActive = true;
-    }
-  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      this.isActive = true;
       /* istanbul ignore else */
       if (this.state.status === Status.PENDING) {
         if (this.props.supportTest()) {

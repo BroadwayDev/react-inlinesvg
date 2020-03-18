@@ -17,12 +17,6 @@ function setup(ownProps = {}) {
 
 describe('react-inlinesvg', () => {
   describe('basic functionality', () => {
-    it('should be a Component', () => {
-      const wrapper = setup({ src: '' });
-
-      expect(wrapper.instance() instanceof React.Component).toBe(true);
-    });
-
     it('should load a relative svg', done => {
       const wrapper = setup({
         src: fixtures.tiger,

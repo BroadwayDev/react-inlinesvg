@@ -59,11 +59,8 @@ export default class InlineSVG extends React.PureComponent {
     wrapper: React.createFactory('span'),
   };
 
-  componentWillMount() {
-    this.isActive = true;
-  }
-
   componentDidMount() {
+    this.isActive = true;
     /* istanbul ignore else */
     if (this.state.status === Status.PENDING) {
       if (this.props.supportTest()) {
